@@ -23,7 +23,6 @@ jobs:
       - name: Install, build, and upload your site
         uses: withastro/action@v3
         with:
-          path: joyreadplan.github.io
           node-version: 20
 
   deploy:
