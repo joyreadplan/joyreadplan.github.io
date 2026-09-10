@@ -11,8 +11,6 @@
   --sl-color-bg-nav: rgba(248, 250, 252, 0.86);
   --sl-color-bg-sidebar: #ffffff;
   --sl-color-hairline: rgba(15, 23, 42, 0.1);
-  --sl-text-h1: clamp(2.15rem, 3.6vw, 3.5rem);
-  --sl-text-h2: clamp(1.45rem, 2.25vw, 2.15rem);
   --sl-font-family: 'HarmonyOS Sans SC', 'MiSans', 'Noto Sans SC', 'PingFang SC',
     'Microsoft YaHei UI', system-ui, sans-serif;
   --sl-font-family-mono: 'JetBrains Mono', 'Cascadia Code', 'SFMono-Regular', Consolas,
@@ -31,6 +29,13 @@
   --jr-shadow: 0 18px 48px rgba(15, 23, 42, 0.08);
   --jr-shadow-soft: 0 12px 32px rgba(15, 23, 42, 0.06);
   --jr-radius: 22px;
+}
+
+/* Starlight's base :root font-size tokens are emitted later in the CSS bundle.
+   Match the same variables with higher specificity so the calmer heading scale wins. */
+:root:root {
+  --sl-text-h1: clamp(1.85rem, 2.6vw, 2.25rem);
+  --sl-text-h2: clamp(1.35rem, 2vw, 1.75rem);
 }
 
 [data-theme='dark'] {
@@ -549,7 +554,8 @@ a {
 }
 
 /* Compact previous/next navigation */
-.pagination-links {
+/* `div.` prefix: Starlight's base `.pagination-links:where(.astro-...)` comes later in the bundle with equal specificity; this guarantees our gap wins. */
+div.pagination-links {
   gap: 0.75rem;
 }
 
