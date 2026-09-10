@@ -148,7 +148,7 @@ a {
 
 .hero .tagline::after {
   content: '本地优先的桌面阅读计划与笔记管理软件';
-  display: inline-flex;
+  display: flex;
   width: fit-content;
   max-width: 100%;
   margin-top: 1.15rem;
@@ -164,6 +164,10 @@ a {
   box-shadow: var(--jr-shadow-soft);
 }
 
+.hero .stack {
+  gap: 0 !important;
+}
+
 .hero img {
   position: relative;
   z-index: 1;
@@ -175,7 +179,7 @@ a {
 
 .hero .actions {
   gap: 0.85rem;
-  margin-top: 2rem;
+  margin-top: 1.51rem !important;
 }
 
 .hero .actions::after {
@@ -189,7 +193,7 @@ a {
 }
 
 .hero .actions a {
-  border-radius: 999px;
+  border-radius: 14px;
   min-height: 2.75rem;
   font-weight: 760;
   letter-spacing: -0.02em;
@@ -537,7 +541,7 @@ a {
   justify-content: center;
   min-height: 2.75rem;
   border: 1px solid var(--sl-color-hairline);
-  border-radius: 999px;
+  border-radius: 14px;
   padding: 0.55rem 1.1rem;
   background: var(--jr-card);
   color: var(--jr-ink);

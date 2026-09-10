@@ -1,10 +1,74 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" style="stop-color:#f39c12"/>
-      <stop offset="100%" style="stop-color:#e67e22"/>
+    <linearGradient id="bg" x1="150" y1="120" x2="870" y2="900" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFF0A8"/>
+      <stop offset="0.28" stop-color="#FFC06E"/>
+      <stop offset="0.58" stop-color="#FF7A68"/>
+      <stop offset="1" stop-color="#F04463"/>
     </linearGradient>
+
+    <linearGradient id="pageLeft" x1="300" y1="350" x2="520" y2="820" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#FFE8E0"/>
+    </linearGradient>
+
+    <linearGradient id="pageRight" x1="540" y1="330" x2="780" y2="810" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#FFF2EA"/>
+    </linearGradient>
+
+    <linearGradient id="bookmark" x1="690" y1="300" x2="735" y2="550" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF9A56"/>
+      <stop offset="0.55" stop-color="#FF6E5E"/>
+      <stop offset="1" stop-color="#F33E61"/>
+    </linearGradient>
+
+    <linearGradient id="pageShadow" x1="320" y1="730" x2="720" y2="880" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFD8C7" stop-opacity="0.85"/>
+      <stop offset="1" stop-color="#FF9A84" stop-opacity="0.55"/>
+    </linearGradient>
+
+    <clipPath id="iconClip">
+      <rect x="96" y="96" width="832" height="832" rx="210"/>
+    </clipPath>
+
+    <filter id="bookShadow" x="165" y="185" width="720" height="720" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feDropShadow dx="0" dy="24" stdDeviation="28" flood-color="#B63B52" flood-opacity="0.18"/>
+    </filter>
   </defs>
-  <rect width="120" height="120" rx="28" fill="url(#grad)"/>
-  <text x="60" y="80" font-family="Georgia, serif" font-size="72" font-weight="600" fill="white" text-anchor="middle">J</text>
+
+  <!-- Transparent outside the rounded-square icon -->
+  <g clip-path="url(#iconClip)">
+    <rect x="96" y="96" width="832" height="832" rx="210" fill="url(#bg)"/>
+
+    <!-- subtle highlight -->
+    <circle cx="240" cy="205" r="230" fill="#FFFFFF" fill-opacity="0.14"/>
+
+    <!-- subtle lower wave -->
+    <path d="M96 735C235 625 404 610 556 657C694 700 812 703 928 623V928H96V735Z" fill="#C92D57" fill-opacity="0.11"/>
+
+    <g filter="url(#bookShadow)">
+      <!-- rear page -->
+      <path d="M518 396C590 330 686 299 789 305C814 306 834 327 834 352V690C834 716 814 737 788 739C679 748 590 784 518 849V396Z" fill="#FFDCCF" fill-opacity="0.72"/>
+
+      <!-- left page -->
+      <path d="M518 401C454 340 373 306 284 304C254 303 230 327 230 357V680C230 709 252 734 281 738C374 748 454 780 518 841V401Z" fill="url(#pageLeft)"/>
+
+      <!-- right page -->
+      <path d="M518 401C582 338 665 304 754 304C784 304 808 328 808 358V680C808 709 786 734 757 737C661 744 581 779 518 841V401Z" fill="url(#pageRight)"/>
+
+      <!-- lower page fold -->
+      <path d="M230 684C345 675 448 718 518 841C450 787 371 754 281 744C252 740 230 715 230 684Z" fill="url(#pageShadow)" fill-opacity="0.55"/>
+      <path d="M518 841C591 783 671 750 757 742C786 739 808 714 808 684C693 678 590 720 518 841Z" fill="url(#pageShadow)" fill-opacity="0.48"/>
+
+      <!-- center fold -->
+      <path d="M518 401V841" stroke="#F4CCC0" stroke-width="9" stroke-linecap="round"/>
+
+      <!-- bookmark -->
+      <path d="M690 310C690 294 703 281 719 281H751C767 281 780 294 780 310V501C780 515 764 522 754 513L739 500C733 495 725 495 719 500L704 513C694 522 678 515 678 501V339C678 324 682 314 690 310Z" fill="url(#bookmark)"/>
+
+      <!-- page highlight -->
+      <path d="M552 424C615 369 684 346 760 346" stroke="#FFFFFF" stroke-opacity="0.55" stroke-width="16" stroke-linecap="round"/>
+    </g>
+  </g>
 </svg>
