@@ -1,0 +1,28 @@
+{
+  "name": "joyreadplan.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joyreadplan/joyreadplan.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+
+  "bugs": {
+    "url": "https://github.com/joyreadplan/joyreadplan.github.io/issues"
+  },
+  "homepage": "https://github.com/joyreadplan/joyreadplan.github.io#readme",
+  "dependencies": {
+    "@astrojs/node": "^11.1.5",
+    "@astrojs/starlight": "^0.42.0",
+    "astro": "^7.3.2"
+  }
+}
