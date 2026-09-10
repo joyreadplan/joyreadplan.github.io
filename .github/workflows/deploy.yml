@@ -19,11 +19,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Install, build, and upload your site
         uses: withastro/action@v6
         with:
-          node-version: 20
+          node-version: 24
 
   deploy:
     environment:
