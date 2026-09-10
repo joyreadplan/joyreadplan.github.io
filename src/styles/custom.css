@@ -36,6 +36,8 @@
 :root:root {
   --sl-text-h1: clamp(1.85rem, 2.6vw, 2.25rem);
   --sl-text-h2: clamp(1.35rem, 2vw, 1.75rem);
+  --sl-text-h3: clamp(1.2rem, 1.7vw, 1.45rem);
+  --sl-text-h4: clamp(1.05rem, 1.4vw, 1.2rem);
 }
 
 [data-theme='dark'] {
@@ -127,6 +129,8 @@ a {
   max-width: 11ch;
   margin-bottom: 0.85rem;
   color: var(--jr-ink);
+  /* Starlight's splash rule sizes the hero h1 to --sl-text-6xl (64px); tie it to the reduced site-wide h1 scale. */
+  font-size: var(--sl-text-h1);
   font-weight: 820;
   letter-spacing: -0.04em;
   line-height: 1.08;
