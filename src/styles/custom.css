@@ -282,11 +282,11 @@ body::before {
 
 /* Landing page sections */
 .screenshot-carousel {
-  --screenshot-card-width: clamp(37.5rem, 68vw, 50rem);
+  --screenshot-card-width: clamp(44rem, 78vw, 80rem);
   --screenshot-gap: clamp(1rem, 2vw, 1.45rem);
   position: relative;
   left: 50%;
-  width: min(92vw, 88rem);
+  width: min(96vw, 100rem);
   margin-top: clamp(1.5rem, 3vw, 2.25rem);
   margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
   transform: translateX(-50%);
@@ -317,34 +317,20 @@ body::before {
   overflow-x: auto;
   overflow-y: visible;
   padding: 0.35rem 0 1rem;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(230, 126, 34, 0.55) transparent;
-  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  scroll-behavior: auto;
 }
 
 .screenshot-carousel__viewport::-webkit-scrollbar {
-  height: 0.55rem;
-}
-
-.screenshot-carousel__viewport::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-.screenshot-carousel__viewport::-webkit-scrollbar-thumb {
-  border-radius: 999px;
-  background: linear-gradient(90deg, rgba(243, 156, 18, 0.65), rgba(230, 126, 34, 0.65));
+  display: none;
 }
 
 .screenshot-carousel__track {
   display: flex;
   width: max-content;
   gap: var(--screenshot-gap);
-  animation: screenshot-marquee 38s linear infinite;
-}
-
-.screenshot-carousel:hover .screenshot-carousel__track,
-.screenshot-carousel:focus-within .screenshot-carousel__track {
-  animation-play-state: paused;
+  transform: none;
+  animation: none;
 }
 
 .screenshot-card {
@@ -355,6 +341,7 @@ body::before {
   border: 1px solid var(--sl-color-hairline);
   border-radius: 28px;
   padding: 0.7rem;
+
   background:
     linear-gradient(145deg, rgba(255, 255, 255, 0.7), rgba(255, 244, 223, 0.46)),
     radial-gradient(circle at 16% 8%, rgba(243, 156, 18, 0.24), transparent 12rem);
@@ -369,6 +356,34 @@ body::before {
   background-image: linear-gradient(rgba(143, 67, 4, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(143, 67, 4, 0.05) 1px, transparent 1px);
   background-size: 22px 22px;
   mask-image: linear-gradient(to bottom, black, transparent 78%);
+}
+
+.screenshot-link {
+  position: relative;
+  display: block;
+  cursor: zoom-in;
+}
+
+.screenshot-link::after {
+  content: '🔍 点击查看大图';
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 2;
+  border-radius: 999px;
+  padding: 0.35rem 0.75rem;
+  background: rgba(0, 0, 0, 0.62);
+  color: white;
+  font-size: 0.82rem;
+  font-weight: 700;
+  opacity: 0;
+  transition: opacity 160ms ease;
+  pointer-events: none;
+}
+
+.screenshot-link:hover::after,
+.screenshot-link:focus-visible::after {
+  opacity: 1;
 }
 
 .screenshot-image {
@@ -402,15 +417,7 @@ body::before {
   letter-spacing: -0.03em;
 }
 
-@keyframes screenshot-marquee {
-  from {
-    transform: translateX(0);
-  }
 
-  to {
-    transform: translateX(calc(-50% - (var(--screenshot-gap) / 2)));
-  }
-}
 
 .audience-section {
   margin-top: 1.35rem;
@@ -512,14 +519,14 @@ body::before {
   }
 
   .screenshot-carousel {
-    --screenshot-card-width: min(86vw, 37.5rem);
-    --screenshot-gap: 0.85rem;
+    --screenshot-card-width: 92vw;
+    --screenshot-gap: 0.6rem;
     width: 100vw;
   }
 
   .screenshot-card {
     border-radius: 22px;
-    padding: 0.45rem;
+    padding: 0.35rem;
   }
 
   .screenshot-image {
@@ -529,6 +536,14 @@ body::before {
   .screenshot-caption {
     padding-inline: 0.2rem;
     font-size: 0.88rem;
+  }
+
+  .screenshot-carousel__track {
+    animation: none;
+  }
+
+  .screenshot-link::after {
+    content: '点击查看大图';
   }
 
   .card {
@@ -550,8 +565,4 @@ body::before {
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .screenshot-carousel__track {
-    animation: none;
-  }
-}
+
