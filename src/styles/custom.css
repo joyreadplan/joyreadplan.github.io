@@ -11,8 +11,8 @@
   --sl-color-bg-nav: rgba(248, 250, 252, 0.86);
   --sl-color-bg-sidebar: #ffffff;
   --sl-color-hairline: rgba(15, 23, 42, 0.1);
-  --sl-text-h1: clamp(2.65rem, 6vw, 5.4rem);
-  --sl-text-h2: clamp(1.9rem, 3.8vw, 3.25rem);
+  --sl-text-h1: clamp(2.15rem, 3.6vw, 3.5rem);
+  --sl-text-h2: clamp(1.45rem, 2.25vw, 2.15rem);
   --sl-font-family: 'HarmonyOS Sans SC', 'MiSans', 'Noto Sans SC', 'PingFang SC',
     'Microsoft YaHei UI', system-ui, sans-serif;
   --sl-font-family-mono: 'JetBrains Mono', 'Cascadia Code', 'SFMono-Regular', Consolas,
@@ -122,9 +122,9 @@ a {
   max-width: 11ch;
   margin-bottom: 0.85rem;
   color: var(--jr-ink);
-  font-weight: 860;
-  letter-spacing: -0.09em;
-  line-height: 0.98;
+  font-weight: 820;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
   text-wrap: balance;
 }
 
@@ -192,16 +192,31 @@ a {
     background-color 180ms ease;
 }
 
-.hero .actions a:not([data-variant='minimal']) {
+.hero .actions a:not(.minimal) {
   box-shadow: 0 14px 30px rgba(37, 99, 235, 0.22);
+}
+
+.hero .actions a.minimal {
+  padding: 0.9375rem 1.25rem;
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  background: #ffffff;
+  color: #0f172a;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
 }
 
 .hero .actions a:hover {
   transform: translateY(-2px);
 }
 
-.hero .actions a:not([data-variant='minimal']):hover {
+.hero .actions a:not(.minimal):hover {
   box-shadow: 0 18px 42px rgba(37, 99, 235, 0.28);
+}
+
+.hero .actions a.minimal:hover {
+  border-color: rgba(37, 99, 235, 0.22);
+  background: #f1f5f9;
+  color: #0f172a;
+  box-shadow: 0 18px 42px rgba(15, 23, 42, 0.12);
 }
 
 /* Content rhythm */
@@ -211,16 +226,16 @@ a {
 }
 
 .sl-markdown-content h2 {
-  margin-top: 4.25rem;
+  margin-top: 3.5rem;
   color: var(--jr-ink);
-  letter-spacing: -0.06em;
-  line-height: 1.08;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
 .sl-markdown-content h3 {
   margin-top: 2.3rem;
   color: var(--jr-ink);
-  letter-spacing: -0.035em;
+  letter-spacing: -0.02em;
 }
 
 .sl-markdown-content > p {
@@ -242,17 +257,50 @@ a {
 }
 
 .sl-markdown-content table {
-  overflow: hidden;
+  /* Starlight's base CSS sets display:block on markdown tables later in the cascade; force real table layout so the columns fill the container. */
+  display: table !important;
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
   border: 1px solid var(--sl-color-hairline);
   border-radius: 18px;
   background: var(--jr-card-solid);
   box-shadow: var(--jr-shadow-soft);
+  table-layout: fixed;
+}
+
+.sl-markdown-content th,
+.sl-markdown-content td {
+  padding: 0.9rem 1.2rem;
+  text-align: left;
 }
 
 .sl-markdown-content th {
   background: var(--jr-panel);
   color: var(--jr-ink);
   font-weight: 760;
+}
+
+.sl-markdown-content td {
+  background: var(--jr-card-solid);
+  color: var(--jr-muted);
+  font-weight: 560;
+}
+
+.sl-markdown-content thead tr:first-child th:first-child {
+  border-top-left-radius: 17px;
+}
+
+.sl-markdown-content thead tr:first-child th:last-child {
+  border-top-right-radius: 17px;
+}
+
+.sl-markdown-content tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 17px;
+}
+
+.sl-markdown-content tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 17px;
 }
 
 /* Card styling */
@@ -500,6 +548,55 @@ a {
   transform: translateY(-2px);
 }
 
+/* Compact previous/next navigation */
+.pagination-links {
+  gap: 0.75rem;
+}
+
+.pagination-links a {
+  box-sizing: border-box;
+  height: 100%;
+  align-items: center;
+  gap: 0.4rem;
+  border-color: var(--sl-color-hairline);
+  border-radius: 14px;
+  padding: 0.62rem 0.85rem;
+  background: var(--jr-card);
+  color: var(--jr-muted);
+  font-size: 0.83rem;
+  line-height: 1.35;
+  box-shadow: var(--jr-shadow-soft);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease,
+    color 180ms ease;
+}
+
+.pagination-links a:hover {
+  border-color: var(--jr-accent-line);
+  background: var(--jr-card-solid);
+  color: var(--jr-accent-strong);
+  box-shadow: var(--jr-shadow-soft);
+  transform: translateY(-1px);
+}
+
+.pagination-links .link-title {
+  display: inline-block;
+  margin-top: 0.08rem;
+  color: var(--jr-ink);
+  font-size: var(--sl-text-lg);
+  line-height: 1.28;
+  letter-spacing: -0.025em;
+}
+
+.pagination-links svg {
+  --sl-icon-size: 1.15rem;
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
 [data-theme='dark'] body {
   background:
     radial-gradient(circle at 50% -18rem, rgba(96, 165, 250, 0.14), transparent 34rem),
@@ -583,7 +680,7 @@ a {
 
   .hero h1 {
     max-width: 12ch;
-    letter-spacing: -0.075em;
+    letter-spacing: -0.035em;
   }
 
   .hero .tagline::after {
